@@ -1,0 +1,5 @@
+customer = {
+    "name":"jayant",
+    "age":30,
+    "is_verified":true
+}
