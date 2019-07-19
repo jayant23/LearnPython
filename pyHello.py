@@ -59,3 +59,10 @@ class point:
 
 point = point(10,20) 
 print(point.x)
+
+class person:
+    def talk(self):
+        print('m nhi khelta')
+
+jayant = person()
+jayant.talk()        
