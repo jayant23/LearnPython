@@ -26,7 +26,7 @@ customer = {
     "is_verified":True
 }
 print(customer.get("birthdate","jan 1 1990"))
-message = input(">")
+message = 'input(">")'
 word = message.split(' ')
 emojis = {
     ":)":"😊",
@@ -61,8 +61,47 @@ point = point(10,20)
 print(point.x)
 
 class person:
-    def talk(self):
-        print('m nhi khelta')
+    def __init__(self, name):
+        self.name=name
+        self.talk()
 
-jayant = person()
-jayant.talk()        
+    def talk(self):
+        print('i am '+self.name)
+
+    def __str__(self):
+        return f'This is person object {self.name}'
+
+jayant = person("jayant")
+jayant.talk()
+print(jayant)   
+
+class Mammal:
+    def walk(self):
+        print('walk')
+    
+    def __init__(self,legs):
+        self.legs = legs
+
+
+class Dog(Mammal):
+    def bark(self):
+        print('bark', self.legs)
+
+class Cat(Mammal):
+    def be_annoying(self):
+        print('annoying', self.legs)
+
+cat1 = Cat(4)
+cat1.be_annoying()
+
+
+dog1 = Dog(3)
+dog1.bark()
+dog1.walk()    
+
+import converters
+from converters import kg_to_lbs
+
+kg_to_lbs(100)
+
+print("kg to lbs ",converters.kg_to_lbs(70))
