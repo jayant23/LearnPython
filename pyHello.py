@@ -117,3 +117,29 @@ class Person:
 
 john = Person("jayant","kumar")
 john.talk()
+
+
+# Inheritance
+
+class persons(object):
+    # Constructor
+    def __init__(self,name):
+        self.name=name
+    
+
+    # to get name
+    def getName(self):
+        return self.name
+    
+
+    # To check if the person is employee
+    def isEmployee(self):
+        return False    
+# Inherited or Sub class (Note Person in bracket)
+class Employee(persons):
+
+    def isEmployee(self):
+        return True        # here we return true
+    # Driver code
+    emp = persons("Greek1")
+    print(emp.getName(),emp.isEmployee())
