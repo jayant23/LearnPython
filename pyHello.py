@@ -105,3 +105,15 @@ from converters import kg_to_lbs
 kg_to_lbs(100)
 
 print("kg to lbs ",converters.kg_to_lbs(70))
+
+
+class Person:
+    def __init__(self,name,lname):
+        self.name=name
+        self.lname = lname   
+    def talk(self):
+        print(f'Hi, im {self.name, self.lname}')
+
+
+john = Person("jayant","kumar")
+john.talk()
