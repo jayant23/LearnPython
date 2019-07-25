@@ -165,5 +165,5 @@ class Derived(Base1, Base2):
     def printStrs(self):
         print(self.str1, self.str2) 
 
-ob = Derived() 
-ob.printStrs()         
+ob = Derived()
+ob.printStrs()
