@@ -33,24 +33,54 @@
 #         print(row["ALPHA_2_MACROGLOBULIN"])
 
 import numpy as np 
+import pandas as pd 
 import csv
+nba = pd.read_csv('C:/Users/TechFerry/Downloads/ims_data_new.csv') 
 with open('C:/Users/TechFerry/Downloads/ims_data_new.csv', 'r') as csvFile:
     reader = csv.reader(csvFile)
-    average = 0
-    sum = 0
-    row_count = 0
     number_Arry = []
+    csvfile = []
     limerick_line = []
     for row in reader:
         cell = row[10]
+        csvfile.append(cell)
         if( cell !="NULL" and cell !="ALPHA_2_MACROGLOBULIN"):
             limerick_line.append(cell)
     for item in limerick_line:
-        number_Arry.append( float(item))
-    # print("List after removal of NULL values : " + str(limerick_line))       
-    # print(np.median(float(limerick_line))) 
+        number_Arry.append(float(item))
+    # nba["K"].fillna(np.median(number_Arry), inplace = True)    
     print(np.median(number_Arry))
+    # print(nba)
 csvFile.close()
+
+
+
+# import numpy as np 
+# import csv
+# with open('C:/Users/TechFerry/Downloads/ims_data_new.csv', 'r') as csvFile:
+#     reader = csv.reader(csvFile)
+#     number_Arry = []
+#     csvfile = []
+#     limerick_line = []
+#     for row in reader:
+#         cell = row[10]
+#         csvfile.append(cell)
+#         if( cell !="NULL" and cell !="ALPHA_2_MACROGLOBULIN"):
+#             limerick_line.append(cell)
+#     for item in limerick_line:
+#         number_Arry.append(float(item))
+        
+#     # for val in csvfile:
+#     #     if(val =="NULL"):
+#     #         x=np.csvfile
+#     #         x[np.isnan(x)]=np.median(number_Arry)
+#     #         val=np.median(number_Arry)
+#     #     csvfile.append(val)
+#     # print(csvfile)
+#         print(np.median(number_Arry))
+# csvFile.close()
+
+
 
 #  with open(csv):
 #     reader = csv.reader(csvFile)
