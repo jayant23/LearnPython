@@ -7,8 +7,9 @@ from sklearn.linear_model import LogisticRegression
 import matplotlib.pyplot as plt 
 import random
 import numpy as np
+from sklearn import metrics
 
-col_names = 'AGE_AT_ENROLLMENT,AGE_AT_TEST,HEIGHT_M,WEIGHT_KG,BMI,AST,ALT'
+col_names = 'AGE_AT_ENROLLMENT,AGE_AT_TEST,HEIGHT_M,WEIGHT_KG,BMI,AST,ALT,FIBRONESTICS'
 col_names = col_names.split(',')
 # load dataset
 def Rand(start, end, num): 
@@ -16,31 +17,26 @@ def Rand(start, end, num):
   
     for j in range(num): 
         res.append(random.randint(start, end)) 
+        
   
     return res 
-Data = pd.read_csv('C:/Users/TechFerry/Downloads/ims_data_converted.csv',sep=',', usecols =col_names)
-Datalength = len(Data)
+Data = pd.read_csv('C:/Users/TechFerry/Downloads/ims_data_converted.csv',sep=',', usecols =col_names).dropna()
 
-randomData =[]
-
-for i in range(Datalength):
-	randomData.append(random.randint(0,1))
-
-Data.insert(7,'Fibronestics',randomData)
-
-print(Data.head())
-
-feature_cols = ['AGE_AT_ENROLLMENT', 'AGE_AT_TEST', 'HEIGHT_M', 'WEIGHT_KG','BMI', 'AST','ALT']
+feature_cols = ['AGE_AT_ENROLLMENT', 'AGE_AT_TEST', 'HEIGHT_M', 'WEIGHT_KG','BMI', 'AST','ALT','FIBRONESTICS']
 X = Data[feature_cols] # Features
-Y = Data["Fibronestics"]
+Y = Data["FIBRONESTICS"]
 
 # split X and y into training and testing sets
 X_train,X_test,y_train,y_test=train_test_split(X,Y,test_size=0.25,random_state=0)
 
-
 # instantiate the model (using the default parameters)
 logreg = LogisticRegression()
-
+y_train = y_train.fillna(0)
 # fit the model with data
 logreg.fit(X_train,y_train)
+y_pred=logreg.predict(X_test)
 print(logreg.coef_)
+print(y_pred)
+cnf_matrix = metrics.confusion_matrix(y_test, y_pred)
+print(cnf_matrix)
+print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
